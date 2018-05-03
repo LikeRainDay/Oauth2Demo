@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Aspect
 public class AutoAop
 {
-
     @Around("@annotation(requestMapping)")
     public Object authAround(ProceedingJoinPoint joinPoint, RequestMapping requestMapping) throws Throwable
     {
