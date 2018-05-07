@@ -86,11 +86,11 @@ public class OAuth2Configuration {
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients
                     .inMemory()
-                    .withClient("yuqiyu_home_pc")
+                    .withClient("client_1")
                     .scopes("read", "write")
                     .authorities(Authorities.ROLE_ADMIN.name(), Authorities.ROLE_USER.name())
                     .authorizedGrantTypes("password", "refresh_token")
-                    .secret("yuqiyu_secret")
+                    .secret("secret")
                     .accessTokenValiditySeconds(1800);
         }
 

@@ -1,5 +1,6 @@
 package com.yuqiyu;
 
+import com.yuqiyu.chapter18.CustomPassword;
 import com.yuqiyu.chapter18.HengYuUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -34,15 +35,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
     @Autowired
     private HengYuUserDetailsService userDetailsService;
     //配置匹配用户时密码规则
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
+    @Autowired
+    private CustomPassword customPassword;
+
     //配置全局设置
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         //设置UserDetailsService以及密码规则
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(customPassword);
     }
     //排除/hello路径拦截
     @Override
